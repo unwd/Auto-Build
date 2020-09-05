@@ -20,7 +20,6 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        echo $version
         up_lzy termux-app/Termux_*.apk
     - name: Store generated APK file
       if: env.zt == 0
