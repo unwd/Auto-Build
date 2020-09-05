@@ -1,7 +1,9 @@
 name: Auto Build Apk
 on: 
    workflow_dispatch:
-
+     branches: [ master ]
+   push:
+     branches: [ master ]
 jobs:
   build:
     runs-on: ubuntu-latest
