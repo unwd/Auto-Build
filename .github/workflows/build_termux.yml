@@ -6,6 +6,8 @@ on:
      branches: [ master ]
    pull_request:
      branches: [ master ]
+   repository_dispatch:
+    types: start auto build
 jobs:
   build:
     runs-on: ubuntu-latest
