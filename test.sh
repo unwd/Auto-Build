@@ -3,7 +3,7 @@ echo "拉取源代码"
 git clone https://github.com/termux/termux-app
 cd termux-app
 local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evif78j" |grep "Termux" |head -1 |awk -F "_" '{print $2}' |awk -F ".apk" '{print $1}')
-export remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
 echo "--$local_version"
 echo "--$remote_version"
 if [ "$local_version" == "$remote_version" ];then
@@ -66,5 +66,5 @@ printf "修改完成\n"
 ##
 printf "开始编译\n"
 ./gradlew assembleDebug
-cp app/build/outputs/apk/debug/app-debug.apk ./Termux_${version}.apk
+cp app/build/outputs/apk/debug/app-debug.apk ./Termux_${remote_version}.apk
 echo "结束"
