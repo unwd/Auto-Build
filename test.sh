@@ -2,7 +2,7 @@
 echo "测试"
 git clone https://github.com/termux/termux-app
 cd termux-app
-version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+export version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
 ##
 str="app/src/main/res/values-zh-rCN/strings.xml"
 str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
