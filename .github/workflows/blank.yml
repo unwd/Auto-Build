@@ -1,8 +1,6 @@
 name: Auto Build Apk
-
 on: 
    workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,6 +10,8 @@ jobs:
     - name: Build
       run: |
         bash test.sh
+        ${{LZY_UPDATE}}
+        up_lzy termux-app/app/build/outputs/apk/debug/app-debug.apk
     - name: Store generated APK file
       uses: actions/upload-artifact@v1
       with:
