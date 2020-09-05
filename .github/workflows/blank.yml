@@ -1,15 +1,15 @@
 name: Auto Build Apk
 
-on:
-  push:
-    branches:
-      - master
-      - android-10
-  pull_request:
-    branches:
-      - master
-      - android-10
-  workflow_dispatch:
+on: workflow_dispatch
+
+
+
+
+
+
+
+
+
 
 jobs:
   build:
