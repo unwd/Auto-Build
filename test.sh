@@ -5,7 +5,7 @@ cd termux-app
 local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evif78j" |grep "Termux" |head -1 |awk -F "_" '{print $2}' |awk -F ".apk" '{print $1}')
 remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
 
-if [ "$local_version" == "$remote_vesion" ];then
+if [ "$local_version" == "$remote_version" ];then
       echo "无最新版本!"
 	exit 1;
 fi
