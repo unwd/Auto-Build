@@ -1,6 +1,7 @@
 name: Auto Build Apk
 
-on: workflow_dispatch
+on: 
+   workflow_dispatch:
 
 
 
