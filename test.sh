@@ -17,7 +17,7 @@ cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
 cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
 
 sed -i "s#↹#TAB#g" app/src/main/java/com/termux/app/ExtraKeysInfos.java
-sed -i "s#ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP#ESC, {key: '-', popup: '|'}, {key: '/', popup: '\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN#g" app/src/main/java/com/termux/app/TermuxPreferences.java
+sed -i "s#ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP#ESC, {key: '-', popup: '|'}, {key: '/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN#g" app/src/main/java/com/termux/app/TermuxPreferences.java
 
 sed -i 's/Copy/复制/g' $str2
 sed -i 's/Paste/粘贴/g' $str2
