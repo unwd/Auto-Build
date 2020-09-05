@@ -5,7 +5,8 @@ cd termux-app
 export version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
 
 if [ $version == "0.99" ];then
-		exit 1;
+      echo "无最新版本!"
+	exit 1;
 fi
 ##
 str="app/src/main/res/values-zh-rCN/strings.xml"
