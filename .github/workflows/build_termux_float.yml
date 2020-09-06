@@ -26,7 +26,7 @@ jobs:
         fi
         echo "::set-env name=zt::$?"
         printf "开始编译\n"
-        ./gradlew assembleDebug
+        ./gradlew aR
         cp app/build/outputs/apk/debug/app-debug.apk ./Termux_float_${remote_version}.apk
         echo "编译结束"
     - name: Upload Apk To Lzy
