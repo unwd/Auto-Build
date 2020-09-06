@@ -1,0 +1,42 @@
+name: Auto Build Termux Tasker Apk
+on: 
+   workflow_dispatch:
+   push:
+     branches: [ master ]
+   repository_dispatch:
+    types: start auto build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        echo "拉取源代码"
+        git clone https://github.com/termux/termux-tasker/
+        cd termux-tasker
+        local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_tasker_" |head -1 |awk -F "_" '{print $2}' |awk -F ".apk" '{print $1}')
+        remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        echo "已编译版本--$local_version"
+        echo "官方最新版本--$remote_version"
+        if [ "$local_version" == "$remote_version" ];then
+          echo "无最新版本!"
+          exit 1;
+        fi
+        echo "::set-env name=zt::$?"
+        printf "开始编译\n"
+        ./gradlew assembleDebug
+        cp app/build/outputs/apk/debug/app-debug.apk ./Termux_tasker_${remote_version}.apk
+        echo "编译结束"
+    - name: Upload Apk To Lzy
+      if: env.zt == 0
+      run: |
+        ${{secrets.LZY_UPDATE}}
+        up_lzy termux-tasker/Termux_tasker_*.apk
+    - name: Store generated APK file
+      if: env.zt == 0
+      uses: actions/upload-artifact@v1
+      with:
+        name: termux-tasker
+        path: ./termux-tasker/app/build/outputs/apk/debug/app-debug.apk
