@@ -1,8 +1,6 @@
 name: Auto Build Termux Float Apk
 on: 
    workflow_dispatch:
-   push:
-     branches: [ master ]
    repository_dispatch:
     types: start auto build
 jobs:
@@ -26,7 +24,7 @@ jobs:
         fi
         echo "::set-env name=zt::$?"
         printf "开始编译\n"
-        ./gradlew aR
+        ./gradlew aD
         cp app/build/outputs/apk/debug/app-debug.apk ./Termux_float_${remote_version}.apk
         echo "编译结束"
     - name: Upload Apk To Lzy

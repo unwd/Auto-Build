@@ -2,10 +2,6 @@ name: Auto Build Termux Apk
 on: 
    workflow_dispatch:
      branches: [ master ]
-   push:
-     branches: [ master ]
-   pull_request:
-     branches: [ master ]
    repository_dispatch:
     types: start auto build
 jobs:
