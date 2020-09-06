@@ -1,4 +1,4 @@
-name: Auto Build Apk
+name: Auto Build Termux Apk
 on: 
    workflow_dispatch:
      branches: [ master ]
