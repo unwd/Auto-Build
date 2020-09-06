@@ -33,7 +33,7 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        up_lzy termux-app/Termux_styling_*.apk
+        up_lzy termux-styling/Termux_styling_*.apk
     - name: Store generated APK file
       if: env.zt == 0
       uses: actions/upload-artifact@v1
