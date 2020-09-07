@@ -17,7 +17,7 @@ jobs:
         echo "已编译版本--$local_version"
         echo "官方最新版本--$remote_version"
         if [ "$local_version" == "$remote_version" ];then
-          echo -n "无最新版本!\n"
+          printf "无最新版本!\n"
           exit 1;
         fi
         ###
