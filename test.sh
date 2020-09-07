@@ -1,12 +1,4 @@
 #!/bin/bash
-local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_app" |head -1 |awk -F "app_" '{print $2}' |awk -F ".apk" '{print $1}')
-remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
-echo "已编译版本--$local_version"
-echo "官方最新版本--$remote_version"
-if [ "$local_version" == "$remote_version" ];then
-      echo "无最新版本!"
-	exit 1;
-fi
 ##
 str="app/src/main/res/values-zh-rCN/strings.xml"
 str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
