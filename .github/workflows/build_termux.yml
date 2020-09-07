@@ -21,6 +21,7 @@ jobs:
           exit 1;
         fi
         ###
+        rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
