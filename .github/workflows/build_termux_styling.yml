@@ -8,12 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      uses: actions/checkout@v2
+      run: git clone https://github.com/termux/termux-styling ./
     - name: Build
       run: |
-        echo "拉取源代码"
-        git clone https://github.com/termux/termux-styling/
-        cd termux-styling
         local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_styling_" |head -1 |awk -F "styling_" '{print $2}' |awk -F ".apk" '{print $1}')
         remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
         echo "已编译版本--$local_version"
@@ -31,10 +28,10 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        up_lzy termux-styling/Termux_styling_*.apk
+        up_lzy Termux_styling_*.apk
     - name: Store generated APK file
       if: env.zt == 0
       uses: actions/upload-artifact@v1
       with:
         name: termux-styling
-        path: ./termux-styling/app/build/outputs/apk/debug/app-debug.apk
+        path: ./app/build/outputs/apk/debug/app-debug.apk

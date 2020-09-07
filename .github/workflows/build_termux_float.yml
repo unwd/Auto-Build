@@ -8,14 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Build
       run: |
-        echo "拉取源代码"
-        #git clone https://github.com/termux/termux-float/
-        #cd termux-float
         wget "https://github.com/termux/termux-float/archive/v0.13.zip"
         unzip v0.13
+    - name: Build
+      run: |
         cd termux-float-0.13
         local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_float_" |head -1 |awk -F "float_" '{print $2}' |awk -F ".apk" '{print $1}')
         remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')

@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "拉取源代码"
-git clone https://github.com/termux/termux-app
-cd termux-app
 local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_app" |head -1 |awk -F "app_" '{print $2}' |awk -F ".apk" '{print $1}')
 remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
 echo "已编译版本--$local_version"

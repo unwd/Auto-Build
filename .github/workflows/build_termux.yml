@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      uses: actions/checkout@v2
+      run: git clone https://github.com/termux/termux-app ./
     - name: Build
       run: |
         bash test.sh
@@ -18,10 +18,10 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        up_lzy termux-app/Termux_app_*.apk
+        up_lzy Termux_app_*.apk
     - name: Store generated APK file
       if: env.zt == 0
       uses: actions/upload-artifact@v1
       with:
         name: termux-app
-        path: ./termux-app/app/build/outputs/apk/debug/app-debug.apk
+        path: ./app/build/outputs/apk/debug/app-debug.apk
