@@ -3,7 +3,7 @@ on:
    workflow_dispatch:
      branches: [ master ]
    repository_dispatch:
-    types: start auto build
+    types: start auto build Termux
 jobs:
   build:
     runs-on: ubuntu-latest
