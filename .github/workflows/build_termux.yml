@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
+      uses: actions/checkout@v2
       run: git clone https://github.com/termux/termux-app ./
     - name: Build
       run: |
