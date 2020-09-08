@@ -20,8 +20,8 @@ jobs:
         echo "成功"
         ls
     - name: Store generated APK file
-       uses: actions/upload-artifact@v1
-         with:
-           name: curl
-           path: ./*
+      uses: actions/upload-artifact@v1
+      with:
+        name: curl
+        path: ./*
 
