@@ -1,0 +1,17 @@
+name: Auto Build Curl
+on: 
+   workflow_dispatch:
+   repository_dispatch:
+    types: start auto build Curl
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 拉取源代码
+      run: git clone https://github.com/curl/curl ./
+    - name: Build
+      run: |
+        ls
+        ./configure --prefix=/usr/local/curl --disable-shared --enable-static --without-libidn --without-ssl --without-librtmp --without-gnutls --without-nss --without-libssh2 --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps --disable-ipv6
+        make
+
