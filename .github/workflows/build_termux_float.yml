@@ -9,11 +9,9 @@ jobs:
     steps:
     - name: Clone repository
       run: |
-        wget "https://github.com/termux/termux-float/archive/v0.13.zip"
-        unzip v0.13
+        git clone -b v0.13 https://github.com/termux/termux-float
     - name: Build
       run: |
-        cd termux-float-0.13
         local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_float_" |head -1 |awk -F "float_" '{print $2}' |awk -F ".apk" '{print $1}')
         remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
         echo "已编译版本--$local_version"
@@ -31,10 +29,10 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        up_lzy termux-float-0.13/Termux_float_*.apk
+        up_lzy Termux_float_*.apk
     - name: Store generated APK file
       if: env.zt == 0
       uses: actions/upload-artifact@v1
       with:
         name: termux-float
-        path: ./termux-float-0.13/app/build/outputs/apk/debug/app-debug.apk
+        path: ./app/build/outputs/apk/debug/app-debug.apk
