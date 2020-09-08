@@ -19,7 +19,7 @@ jobs:
         make
         echo "成功"
         ls
-     - name: Store generated APK file
+    - name: Store generated APK file
        uses: actions/upload-artifact@v1
          with:
            name: curl
