@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 拉取源代码
-      run: git clone https://github.com/curl/curl ./
+      run: |
+        wget "https://curl.haxx.se/download/curl-7.72.0.tar.xz"
+        tar pxvf curl-7.72.0.tar.xz
     - name: Build
       run: |
+        cd curl-7.72.0
         ls
-        cmake -static -pthread -lrt -ldl
-        
+        ./configure --prefix=/usr/local/curl --disable-shared --enable-static --without-libidn --without-ssl --without-librtmp --without-gnutls --without-nss --without-libssh2 --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps --disable-ipv6
+        make
 
