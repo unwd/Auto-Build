@@ -11,11 +11,10 @@ jobs:
       run: |
         wget "https://curl.haxx.se/download/curl-7.72.0.tar.xz"
         tar pxvf curl-7.72.0.tar.xz
-    - name: install
-      install: openssl-devel
     - name: Build
       run: |
         cd curl-7.72.0
+        apt update && apt install -y openssl-devel
         pwd
         ls
         CFLAGS=-static ./configure --prefix=/usr --disable-shared --enable-static --without-libidn --without-librtmp --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps
