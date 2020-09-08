@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      run: |
-        git clone -b v0.13 https://github.com/termux/termux-float
+      run: git clone -b v0.13 https://github.com/termux/termux-float
     - name: Build
       run: |
         local_version=$(curl -s "http://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_float_" |head -1 |awk -F "float_" '{print $2}' |awk -F ".apk" '{print $1}')
