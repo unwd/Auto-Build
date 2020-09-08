@@ -68,7 +68,7 @@ jobs:
         rep "Install" "安装" $str
         rep "The Termux:Style add-on is not installed." "Termux:Style插件没有安装." $str
         rep "Style" "风格" $str
-        rep "Keep screen on" "保持屏幕" $str
+        rep "Keep screen on" "保持屏幕常亮" $str
         rep "Keyboard" "键盘" $str
         printf "修改完成----\n"
         printf "开始编译\n"
