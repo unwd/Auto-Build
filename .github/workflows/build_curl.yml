@@ -15,13 +15,16 @@ jobs:
       run: |
         cd curl-7.72.0
         ls
-        ./configure --prefix=/usr/local/curl --disable-shared --enable-static --without-libidn --without-ssl --without-librtmp --without-gnutls --without-nss --without-libssh2 --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps --disable-ipv6
+        ./configure --prefix=./ --disable-shared --enable-static --without-libidn --without-ssl --without-librtmp --without-gnutls --without-nss --without-libssh2 --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps --disable-ipv6
         make
+        mkdir bin
+        make install
         echo "成功"
         ls
+        ls bin/
     - name: Store generated APK file
       uses: actions/upload-artifact@v1
       with:
         name: curl
-        path: ./*
+        path: ./curl-7.72.0/bin/curl
 
