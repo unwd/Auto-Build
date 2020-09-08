@@ -14,7 +14,7 @@ jobs:
     - name: Build
       run: |
         cd curl-7.72.0
-        apt update && apt install -y openssl-devel
+        sudo apt update && sudo apt install -y openssl-devel
         pwd
         ls
         CFLAGS=-static ./configure --prefix=/usr --disable-shared --enable-static --without-libidn --without-librtmp --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps
