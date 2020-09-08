@@ -11,8 +11,9 @@ jobs:
       run: |
         wget "https://curl.haxx.se/download/curl-7.72.0.tar.xz"
         tar pxvf curl-7.72.0.tar.xz
-    - name: Build
+    - name: install
       install: openssl-devel
+    - name: Build
       run: |
         cd curl-7.72.0
         pwd
