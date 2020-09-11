@@ -15,8 +15,8 @@ jobs:
       run: |
         cd curl-7.72.0
         sudo apt update && sudo apt install -y openssl-*
-        pwd
-        ls
+        sudo apt search openssl
+   
         ./configure --prefix=/usr --disable-shared --enable-static --without-libidn --without-librtmp --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps
         LDFLAGS="${LDFLAGS} -static" make
         echo "目录"
