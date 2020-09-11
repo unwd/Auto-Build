@@ -17,8 +17,8 @@ jobs:
         sudo apt update && sudo apt install -y openssl-*
         pwd
         ls
-        CFLAGS=-static ./configure --prefix=/usr --disable-shared --enable-static --without-libidn --without-librtmp --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps
-        make
+        ./configure --prefix=/usr --disable-shared --enable-static --without-libidn --without-librtmp --without-zlib --without-winidn --disable-rtsp --disable-ldap --disable-ldaps
+        LDFLAGS="${LDFLAGS} -static" make
         echo "目录"
         ls src/
         
