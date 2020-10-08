@@ -35,6 +35,7 @@ jobs:
         sed -i "s/.*widget.*/\"widget\":\"${remote_version}\",/g" version.json
         git config --global user.email "zfuns@qq.com"
         git config --global user.name "zfuns"
+        git pull
         git add version.json
         git commit -m "update"
         git push
