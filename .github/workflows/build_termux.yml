@@ -13,6 +13,8 @@ jobs:
     - name: Check version
       run: |
         remote_version=$(cat termux_app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        ls
+        pwd
         local_version=$(cat version.json |jq -r .app)
         echo "已编译版本--$local_version"
         echo "官方最新版本--$remote_version"
