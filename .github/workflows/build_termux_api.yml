@@ -7,23 +7,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: 拉取源代码
-      run: git clone https://github.com/termux/termux-api ./
-    - name: Build
+      run: git clone https://github.com/termux/termux-api termux_api
+    - name: Check version
       run: |
-        local_version=$(curl -s "http://api.xda.plus/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_api_" |head -1 |awk -F "api_" '{print $2}' |awk -F ".apk" '{print $1}')
-        remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        remote_version=$(cat termux_api/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        local_version=$(cat version.json |jq -r .api)
         echo "已编译版本--$local_version"
         echo "官方最新版本--$remote_version"
         if [ "$local_version" == "$remote_version" ];then
-          echo "无最新版本!"
-          exit 1;
+                printf "无最新版本!\n\n"
+                exit 1;
         fi
-        echo "::set-env name=zt::$?"
+        echo "zt=$?" >> $GITHUB_ENV
+        echo "remote_version=$remote_version" >> $GITHUB_ENV
+        echo "local_version=$local_version" >> $GITHUB_ENV
+    - name: Build
+      run: |
         printf "开始编译\n"
+        cd termux_api
         ./gradlew assembleDebug
-        cp app/build/outputs/apk/debug/app-debug.apk ./Termux_api_${remote_version}.apk
+        cp app/build/outputs/apk/debug/app-debug.apk ../Termux_api_${remote_version}.apk
         echo "编译结束"
+    - name: Change local version
+      run: |
+        sed -i "s/.*api.*/\"api\":\"${remote_version}\",/g" version.json
+        git config --global user.email "zfuns@qq.com"
+        git config --global user.name "zfuns"
+        git add version.json
+        git commit -m "update"
+        git push
     - name: Upload Apk To Lzy
       if: env.zt == 0
       run: |
@@ -34,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-api
-        path: ./app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_api/app/build/outputs/apk/debug/app-debug.apk
