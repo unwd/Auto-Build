@@ -9,18 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      run: git clone https://github.com/termux/termux-app ./
-    - name: Build
+      run: git clone https://github.com/termux/termux-app termux_app
+    - name: Check version
       run: |
-        local_version=$(curl -s "http://api.xda.plus/lzy_dir/api.php?fdir=b0evwprqb" |grep " Termux_app" |head -1 |awk -F "app_" '{print $2}' |awk -F ".apk" '{print $1}')
-        remote_version=$(cat app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        remote_version=$(cat termux_app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
+        local_version=$(cat version.json |jq -r .app)
         echo "已编译版本--$local_version"
         echo "官方最新版本--$remote_version"
         if [ "$local_version" == "$remote_version" ];then
-          printf "无最新版本!\n\n"
-          exit 1;
+                printf "无最新版本!\n\n"
+                exit 1;
         fi
+        echo "zt=$?" >> $GITHUB_ENV
+        echo "remote_version=$remote_version" >> $GITHUB_ENV
+        echo "local_version=$local_version" >> $GITHUB_ENV
+    - name: Build
+      run: |
         ###
+        cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
@@ -71,10 +77,20 @@ jobs:
         rep "Keep screen on" "保持屏幕常亮" $str
         rep "Keyboard" "键盘" $str
         printf "修改完成----\n"
+    - name: Build
+      run: |
         printf "开始编译\n"
+        cd termux_app
         ./gradlew assembleDebug
-        cp app/build/outputs/apk/debug/app-debug.apk ./Termux_app_${remote_version}.apk
-        echo "::set-env name=zt::$?"
+        cp app/build/outputs/apk/debug/app-debug.apk ../Termux_app_${remote_version}.apk
+    - name: edit version
+        run: |
+          sed -i "s/.*app.*/\"app\":\"${remote_version}\",/g" version.json
+          git config --global user.email "zfuns@qq.com"
+          git config --global user.name "zfuns"
+          git add version.json
+          git commit -m "update"
+          git push
     - name: Upload Apk To Lzy
       if: env.zt == 0
       run: |
@@ -85,4 +101,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-app
-        path: ./app/build/outputs/apk/debug/app-debug.apk
+        path: .termux_app/app/build/outputs/apk/debug/app-debug.apk
