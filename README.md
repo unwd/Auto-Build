@@ -8,5 +8,5 @@ https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb
 如果检测到新版本将会自动构建
 
 备用链接:
-https://api.xda.plus/lzy_dir/api.php?fdir=b0evwprqb
-https://api.xda.plus/auto_build/
+
+https://funs.lanzous.com/b0evwprqb
