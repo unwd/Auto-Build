@@ -50,6 +50,7 @@ jobs:
         rep "Open folder" "打开文件夹" $str
         rep "Save file in ~\/downloads\/" "保存文件到 ~\/downloads\/" $str
         rep "Help" "帮助" $str
+        rep "Autofill password" "自动填充密码" $str
         rep "Kill process (%d)" "杀死会话 (%d)" $str
         rep "Close down existing ones before creating new." "在创建新的之前关闭现有的." $str
         rep "Max terminals reached" "终端到达最大数量了" $str
