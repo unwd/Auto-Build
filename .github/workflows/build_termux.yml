@@ -84,8 +84,8 @@ jobs:
         printf "开始编译\n"
         cd termux_app
         ./gradlew assembleDebug
-        ls app/build/outputs/apk/debug
-        cp app/build/outputs/apk/debug/app-debug.apk ../Termux_app_${remote_version}.apk
+        zip -r ./Termux_app_${remote_version}.zip app/build/outputs/apk/debug
+        
     - name: Change local version
       run: |
           sed -i "s/.*app.*/\"app\":\"${remote_version}\",/g" version.json
@@ -98,10 +98,10 @@ jobs:
       if: env.zt == 0
       run: |
         ${{secrets.LZY_UPDATE}}
-        up_lzy Termux_app_*.apk
+        up_lzy Termux_app_*.zip
     - name: Store generated APK file
       if: env.zt == 0
       uses: actions/upload-artifact@v1
       with:
         name: termux-app
-        path: ./termux_app/app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_app/app/build/outputs/apk/debug
