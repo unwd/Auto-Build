@@ -84,7 +84,7 @@ jobs:
         printf "开始编译\n"
         cd termux_app
         ./gradlew assembleDebug
-        zip -r ./Termux_app_${remote_version}.zip app/build/outputs/apk/debug
+        zip -r ../Termux_app_${remote_version}.zip app/build/outputs/apk/debug
         
     - name: Change local version
       run: |
