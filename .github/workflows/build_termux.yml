@@ -78,7 +78,7 @@ jobs:
         rep "Style" "风格" $str
         rep "Keep screen on" "保持屏幕常亮" $str
         rep "Keyboard" "键盘" $str
-        rep "The following file does not exist" "以下文件不存" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
+        rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
         rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
         rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
