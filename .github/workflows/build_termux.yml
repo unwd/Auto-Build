@@ -81,6 +81,8 @@ jobs:
         rep "The following file does not exist" "以下文件不存" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
         rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
         rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
+        rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         printf "修改完成----\n"
     - name: Build
       run: |
