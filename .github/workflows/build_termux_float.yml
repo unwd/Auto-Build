@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Clone repository
-      run: git clone -b v0.13 https://github.com/termux/termux-float termux_float
+      run: git clone https://github.com/termux/termux-float termux_float
     - name: Check version
       run: |
         remote_version=$(cat termux_float/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
