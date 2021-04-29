@@ -69,6 +69,7 @@ jobs:
         rep "Create" "创建" $str
         rep "New named session" "新命名的会话" $str
         rep "Set session name" "设置会话名" $str
+        rep "Settings" "设置" $str
         rep "Set" "设置" $str
         rep "Send text to:" "发送文本至:" $str
         rep "Terminal transcript" "终端日志" $str
