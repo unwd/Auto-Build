@@ -34,7 +34,7 @@ jobs:
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
         cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
         rep "↹" "TAB" app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
-        #rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" app/src/main/java/com/termux/app/TermuxPreferences.java
+        rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More" "更多" $str2
