@@ -27,6 +27,7 @@ jobs:
     - name: Build
       run: |
         ###
+        tem(){
         cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
@@ -96,6 +97,7 @@ jobs:
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         printf "修改完成----\n"
+        }
     - name: Build
       run: |
         printf "开始编译\n"
