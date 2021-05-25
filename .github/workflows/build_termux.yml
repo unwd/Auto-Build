@@ -27,13 +27,12 @@ jobs:
     - name: Build
       run: |
         ###
-        tran(){
         cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
-        #str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
+        str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
-        #cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
+        cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
         rep "↹" "TAB" app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
         rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
@@ -61,7 +60,7 @@ jobs:
         rep "Acquire wakelock" "开启唤醒锁" $str
         rep "Release wakelock" "关闭唤醒锁" $str
         rep "Reset" "重置" $str
-        rep "Terminal reset." "重置终端" $str
+        rep "Terminal reset." "重置终端<" $str
         rep "Share transcript" "分享日志" $str
         rep "Select URL" "选择链接" $str
         rep "URL copied to clipboard" "URL复制到剪贴板" $str
@@ -97,8 +96,6 @@ jobs:
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         printf "修改完成----\n"
-        }
-        tran
     - name: Build
       run: |
         printf "开始编译\n"
