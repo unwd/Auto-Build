@@ -28,8 +28,7 @@ jobs:
         printf "开始编译\n"
         cd termux_widget
         ./gradlew assembleDebug
-        ls app/build/outputs/apk/debug/
-        cp app/build/outputs/apk/debug/app-debug.apk ../Termux_widget_${remote_version}.apk
+        cp app/build/outputs/apk/debug/termux-widget-debug.apk ../Termux_widget_${remote_version}.apk
         echo "编译结束"
     - name: Change local version
       run: |
@@ -50,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-widget
-        path: ./termux_widget/app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_widget/app/build/outputs/apk/debug/termux-widget-debug.apk
