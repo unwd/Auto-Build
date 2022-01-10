@@ -28,7 +28,7 @@ jobs:
         printf "开始编译\n"
         cd termux_float
         ./gradlew assembleDebug
-        cp app/build/outputs/apk/debug/app-debug.apk ../Termux_float_${remote_version}.apk
+        cp app/build/outputs/apk/debug/termux-float_debug.apk ../Termux_float_${remote_version}.apk
         echo "编译结束"
     - name: Change local version
       run: |
@@ -48,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-float
-        path: ./termux_float/app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_float/app/build/outputs/apk/debug/termux-float_debug.apk
