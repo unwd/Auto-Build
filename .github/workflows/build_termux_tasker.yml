@@ -48,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-tasker
-        path: ./termux_tasker/app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_tasker/app/build/outputs/apk/debug/termux-tasker_debug.apk
