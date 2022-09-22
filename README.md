@@ -9,4 +9,4 @@ https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb
 
 备用链接:
 
-https://funs.lanzoux.com/b0evwprqb
+https://zfuns.lanzouy.com/b0evwprqb
