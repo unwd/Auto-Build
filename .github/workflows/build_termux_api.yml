@@ -45,7 +45,7 @@ jobs:
         up_lzy Termux_api_*.apk
     - name: Store generated APK file
       if: env.zt == 0
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: termux-api
         path: ./termux_api/app/build/outputs/apk/debug/termux-api_debug.apk
