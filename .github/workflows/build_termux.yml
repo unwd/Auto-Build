@@ -103,7 +103,7 @@ jobs:
         cd termux_app
         ./gradlew assembleDebug
         ls -alh app/build/outputs/apk/debug
-        cp app/build/outputs/apk/debug/termux-app_debug_arm64-v8a.apk ../Termux_app_${remote_version}.apk
+        cp app/build/outputs/apk/debug/termux-app_apt-android-7-debug_arm64-v8a.apk ../Termux_app_${remote_version}.apk
         #zip -j ../Termux_app_${remote_version}.zip app/build/outputs/apk/debug/*
         
     - name: Change local version
