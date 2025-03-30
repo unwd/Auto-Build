@@ -23,7 +23,7 @@ jobs:
         echo "remote_version=$remote_version" >> $GITHUB_ENV
         echo "local_version=$local_version" >> $GITHUB_ENV
     - name: Clone repository 
-      run: git clone -b "$target_commitish" https://github.com/termux/termux-app termux_app
+      run: git clone -b ${target_commitish} https://github.com/termux/termux-app termux_app
     - name: Build
       run: |
         ###
