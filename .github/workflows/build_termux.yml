@@ -34,6 +34,7 @@ jobs:
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
         cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
+        zs(){
         rep "↹" "TAB" termux-shared/src/main/java/com/termux/shared/termux/extrakeys/ExtraKeysConstants.java
         rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
@@ -96,6 +97,7 @@ jobs:
         rep "Crash Report Notifications" "崩溃报告通知" $str
         rep "Disable notifications for crash reports." "禁用崩溃报告的通知" $str
         rep "Show notifications for crash reports. (Default)" "显示崩 溃报告的通 知.(默认)" $str
+        }
 
         rep ">About<" ">关于<" $str
         rep ">Donate<" ">捐赠<" $str
