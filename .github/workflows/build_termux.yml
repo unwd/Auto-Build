@@ -113,7 +113,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: termux-app
-        path: ./termux_app/app/build/outputs/apk/debug 
+        path: ./termux_app/app/build/outputs/apk/debug/*.apk
     - name: Upload Apk To Lzy
       if: env.zt == 0
       run: |
