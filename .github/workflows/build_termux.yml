@@ -80,7 +80,12 @@ jobs:
         rep "Style" "风格" $str
         rep "Keep screen on" "保持屏幕常亮" $str
         rep "Report Issue" "报告问题" $str
+
         rep "Keyboard" "键盘" $str
+        rep "Enabling Terminal Toolbar" "启用终端工具栏" $str
+        rep "Disabling Terminal Toolbar" "禁用终端工具栏" $str
+
+
         rep "Soft keyboard will be disabled." "禁用软键盘" $str
         rep "Soft keyboard will be enabled. (Default)" "启用软键盘.(默认)" $str
         rep "Debugging" "调试" $str
