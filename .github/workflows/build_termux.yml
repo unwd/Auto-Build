@@ -188,8 +188,9 @@ jobs:
         rep2 "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep2 "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         printf "修改完成----\n"
-        #修改图标
-        |
+
+    - name: Edit icon
+      run: |
         cat > app/src/main/res/drawable/ic_foreground.xml <<'EOF'
         <?xml version="1.0" encoding="utf-8"?>
         <vector xmlns:android="http://schemas.android.com/apk/res/android"
