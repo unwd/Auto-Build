@@ -29,7 +29,7 @@ jobs:
       run: |
         ###
         cd termux_app
-        rep(){ sed -i "s/$1/$2/g" $3 ;}
+        rep(){ sed -i -z "s/>$1</>$2</g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         mkdir -p app/src/main/res/values-zh-rCN
@@ -41,55 +41,77 @@ jobs:
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More" "更多" $str2
-        rep "Abort" "中止" $str
         rep "Termux can only be installed on the primary user account." "Termux只能安装在主用户帐户." $str
-        rep "Termux was unable to install the bootstrap packages." "Termux无法安装引导程序包." $str
-        rep "Check your network connection and try again." "检查您的网络连接，然后再试一次." $str
+        rep "Termux was unable to install the bootstrap packages." "Termux无法安 装引导程序包." $str
+        rep "Check your network connection and try again." "检查您的网络连接，然 后再试一次." $str
         rep "&TERMUX_APP_NAME; user" "\&TERMUX_APP_NAME; 用户" $str
-        rep "Unable to install" "无法安装" $str
+        rep "Installing bootstrap packages…" "安装引导程序包..." $str
+        rep "Abort" "中止" $str
         rep "Try again" "再试一次" $str
+
+        rep "&TERMUX_APP_NAME; Bootstrap Error" "\&TERMUX_APP_NAME; 引导错误" $str
+        rep "&TERMUX_APP_NAME; was unable to install the bootstrap packages." "\&TERMUX_APP_NAME; 无法安装引导程序包." $str
+
+        rep "Unable to install" "无法安装" $str
         rep "Installing…" "安装中..." $str
         rep "Really kill this session?" "确定杀死这个会话吗？" $str
         rep "Edit" "编辑" $str
         rep "Open directory" "打开文件夹" $str
         rep "Save file in ~\/downloads\/" "保存文件到 ~\/downloads\/" $str
         rep "Help" "帮助" $str
+        rep "Autofill username" "自动填充用户名" $str
         rep "Autofill password" "自动填充密码" $str
         rep "Kill process (%d)" "杀死会话 (%d)" $str
-        rep "Close down existing ones before creating new." "在创建新的之前关闭现有的." $str
-        rep "Max terminals reached" "终端到达最大数量了" $str
+
+        #
         rep "New session" "新建会话" $str
         rep "Failsafe" "新建系统会话" $str
+        rep "Max terminals reached" "终端到达最大数量了" $str
+        rep "Close down existing ones before creating new." "在创建新的之前关闭现有的." $str
+
+        rep "Set session name" "设置会话名" $str
+        rep "New named session" "新命名的会话" $str
+        rep "Create" "创建" $str
+        rep "Set" "设置" $str
+
+        rep "Keyboard" "键盘" $str
+        rep "Enabling Terminal Toolbar" "启用终端工具栏" $str
+        rep "Disabling Terminal Toolbar" "禁用终端工具栏" $str
+
+
+
+        #
         rep "Exit" "退出" $str
         rep "Acquire wakelock" "开启唤醒锁" $str
         rep "Release wakelock" "关闭唤醒锁" $str
         rep "Reset" "重置" $str
         rep "Terminal reset." "重置终端<" $str
         rep "Share transcript" "分享日志" $str
+        rep "Share selected text" "分享选中文本" $str
+        rep "Send selected text to:" "发送选中文本至:" $str
+        rep "Terminal Text" "终端文本" $str
+        rep "Send transcript to:" "发送日志至:" $str
         rep "Select URL" "选择链接" $str
         rep "URL copied to clipboard" "URL复制到剪贴板" $str
-        rep "Click URL to copy or long press to open" "点击链接复制或长按打开" $str
+        rep "Click URL to copy or long press to open" "点击链接复制或 长按打开" $str
         rep "No URL found in the terminal." "在终端中找不到URL。" $str
-        rep "Create" "创建" $str
-        rep "New named session" "新命名的会话" $str
-        rep "Set session name" "设置会话名" $str
-        rep ">Settings<" ">设置<" $str
-        rep ">Set<" ">设置<" $str
+        rep "Settings" "设置" $str
         rep "Send text to:" "发送文本至:" $str
         rep "Terminal transcript" "终端日志" $str
-        rep ">Install<" ">安装<" $str
+        rep "Install" "安装" $str
         rep "The &TERMUX_STYLING_APP_NAME; Plugin App is not installed." "\&TERMUX_STYLING_APP_NAME; 插件没有安装." $str
         rep "Style" "风格" $str
         rep "Keep screen on" "保持屏幕常亮" $str
-        rep "Report Issue" "报告问题" $str
 
-        rep "Keyboard" "键盘" $str
-        rep "Enabling Terminal Toolbar" "启用终端工具栏" $str
-        rep "Disabling Terminal Toolbar" "禁用终端工具栏" $str
+        rep "Report Issue" "报告问题" $str
+        rep "Generating Report" "生成报告" $str
+        rep "Add termux debug info to report?" "添加termux调试信息到报告?" $str
+
 
         rep "Soft keyboard will be disabled." "禁用软键盘" $str
         rep "Soft keyboard will be enabled. (Default)" "启用软键盘.(默认)" $str
         rep "Debugging" "调试" $str
+        rep "Preferences for debugging" "调试首选项" $str
         rep "Logging" "日志" $str
         rep "Log Level" "日志级别" $str
         rep "Plugin Error Notifications" "插件错误通知" $str
@@ -99,8 +121,20 @@ jobs:
         rep "Disable notifications for crash reports." "禁用崩溃报告的通知" $str
         rep "Show notifications for crash reports. (Default)" "显示崩 溃报告的通 知.(默认)" $str
 
-        rep ">About<" ">关于<" $str
-        rep ">Donate<" ">捐赠<" $str
+        rep "Terminal View" "终端视图" $str
+        rep "Preferences for terminal view" "终端视图首选项" $str
+        rep "View" "视图" $str
+        rep "Terminal Margin Adjustment" "终端边距调整" $str
+        rep "Terminal margin adjustment will be disabled." "禁用终端边距调整" $str
+        rep "Terminal margin adjustment will be enabled.\n\s*It should be enabled to try to fix the issue where soft keyboard covers part of extra keys\/terminal view.\n\s*If it causes screen flickering on your devices, then disable it. (Default)" "启用终端边距调整.\n它应该启用以尝试修复软键盘覆盖额外键\/终端视图的一部分的问题.\n如果它在您的设备上导致屏幕闪烁，请禁用它.(默认)" $str
+
+        rep "Preferences for &TERMUX_API_APP_NAME; app" "\&TERMUX_API_APP_NAME;  应用首选项" $str
+        rep "Preferences for &TERMUX_FLOAT_APP_NAME; app" "\&TERMUX_FLOAT_APP_NAME; 应用首选项" $str
+        rep "Preferences for &TERMUX_TASKER_APP_NAME; app" "\&TERMUX_TASKER_APP_NAME; 应用首选项" $str
+        rep "Preferences for &TERMUX_WIDGET_APP_NAME; app" "\&TERMUX_WIDGET_APP_NAME; 应用首选项" $str
+
+        rep "About" "关于" $str
+        rep "Donate" "捐赠" $str
 
         rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
         rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链 接到此文件" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
