@@ -91,8 +91,8 @@ jobs:
         rep "Crash Report Notifications" "崩溃报告通知" $str
         rep "Disable notifications for crash reports." "禁用崩溃报告的通知" $str
         rep "Show notifications for crash reports. (Default)" "显示崩溃报告的通知.(默认)" $str
-        rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
-        rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
+        ##rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
+        ##rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
         ##rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
         ##rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         ##rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
