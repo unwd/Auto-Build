@@ -97,7 +97,6 @@ jobs:
         rep "Crash Report Notifications" "崩溃报告通知" $str
         rep "Disable notifications for crash reports." "禁用崩溃报告的通知" $str
         rep "Show notifications for crash reports. (Default)" "显示崩 溃报告的通 知.(默认)" $str
-        }
 
         rep ">About<" ">关于<" $str
         rep ">Donate<" ">捐赠<" $str
@@ -107,6 +106,7 @@ jobs:
         rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会 话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        }
         printf "修改完成----\n"
     - name: Build
       run: |
