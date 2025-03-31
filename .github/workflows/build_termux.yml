@@ -30,14 +30,15 @@ jobs:
         ###
         cd termux_app
         rep(){ sed -i -z "s/>$1</>$2</g" $3 ;}
+        rep2(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         mkdir -p app/src/main/res/values-zh-rCN
         cp -r app/src/main/res/values/strings.xml $str
         mkdir -p terminal-view/src/main/res/values-zh-rCN
         cp -r terminal-view/src/main/res/values/strings.xml $str2
-        rep "↹" "TAB" termux-shared/src/main/java/com/termux/shared/termux/extrakeys/ExtraKeysConstants.java
-        rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
+        rep2 "↹" "TAB" termux-shared/src/main/java/com/termux/shared/termux/extrakeys/ExtraKeysConstants.java
+        rep2 "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More…" "更多…" $str2
@@ -181,11 +182,11 @@ jobs:
         rep "About" "关于" $str
         rep "Donate" "捐赠" $str
 
-        rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
-        rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链 接到此文件" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
-        rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会 话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
-        rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
-        rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        rep2 "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
+        rep2 "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/app/api/file/FileReceiverActivity.java
+        rep2 " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
+        rep2 "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        rep2 "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         printf "修改完成----\n"
     - name: Build
       run: |
