@@ -76,7 +76,7 @@ jobs:
         rep "Terminal transcript" "终端日志" $str
         rep "Termux user" "Termux用户" $str
         rep "Install" "安装" $str
-        rep "The Termux:Style add-on is not installed." "Termux:Style插件没有安装." $str
+        rep "The &TERMUX_STYLING_APP_NAME; Plugin App is not installed." "\&TERMUX_STYLING_APP_NAME; 插件没有安装." $str
         rep "Style" "风格" $str
         rep "Keep screen on" "保持屏幕常亮" $str
         rep "Report Issue" "报告问题" $str
