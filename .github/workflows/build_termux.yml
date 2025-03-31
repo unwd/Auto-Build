@@ -40,7 +40,7 @@ jobs:
         rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
-        rep "More" "更多" $str2
+        rep "More…" "更多…" $str2
         rep "Termux can only be installed on the primary user account." "Termux只能安装在主用户帐户." $str
         rep "Termux was unable to install the bootstrap packages." "Termux无法安装引导程序包." $str
         rep "Check your network connection and try again." "检查您的网络连接，然后再试一次." $str
