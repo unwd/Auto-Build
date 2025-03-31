@@ -28,7 +28,6 @@ jobs:
     - name: Build
       run: |
         ###
-        zs(){
         cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
@@ -36,7 +35,7 @@ jobs:
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
         cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
         rep "↹" "TAB" termux-shared/src/main/java/com/termux/shared/termux/extrakeys/ExtraKeysConstants.java
-        rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
+        ##rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More" "更多" $str2
@@ -97,7 +96,6 @@ jobs:
         rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
-        }
         printf "修改完成----\n"
     - name: Build
       run: |
