@@ -28,6 +28,7 @@ jobs:
     - name: Build
       run: |
         ###
+        zs(){
         cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
@@ -96,6 +97,7 @@ jobs:
         rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
         rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
         rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        }
         printf "修改完成----\n"
     - name: Build
       run: |
