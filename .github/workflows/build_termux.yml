@@ -32,8 +32,8 @@ jobs:
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
         str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
-        zs(){
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
+        zs(){
         cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
         rep "↹" "TAB" termux-shared/src/main/java/com/termux/shared/termux/extrakeys/ExtraKeysConstants.java
         rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java
