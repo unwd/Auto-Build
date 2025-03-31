@@ -191,6 +191,7 @@ jobs:
 
     - name: Edit icon
       run: |
+        cd termux_app
         cat > app/src/main/res/drawable/ic_foreground.xml <<'EOF'
         <?xml version="1.0" encoding="utf-8"?>
         <vector xmlns:android="http://schemas.android.com/apk/res/android"
