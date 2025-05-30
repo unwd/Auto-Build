@@ -29,7 +29,7 @@ jobs:
         cd termux_api
         ./gradlew assembleDebug
         ls -alh app/build/outputs/apk/debug 
-        cp app/build/outputs/apk/debug/termux-api_debug.apk ../Termux_api_${remote_version}.apk
+        cp app/build/outputs/apk/debug/termux-api*debug.apk ../Termux_api_${remote_version}.apk
         echo "编译结束"
     - name: Change local version
       run: |
