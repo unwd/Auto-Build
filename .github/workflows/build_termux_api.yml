@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: 拉取源代码
       run: git clone https://github.com/termux/termux-api termux_api
     - name: Check version
