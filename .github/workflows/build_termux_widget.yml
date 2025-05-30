@@ -49,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: termux-widget
-        path: ./termux_widget/app/build/outputs/apk/debug/termux-widget_debug.apk
+        path: ./termux_widget/app/build/outputs/apk/debug/*debug.apk
