@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Clone repository
       run: git clone https://github.com/termux/termux-tasker termux_tasker
     - name: Check version
@@ -48,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: termux-tasker
-        path: ./termux_tasker/app/build/outputs/apk/debug/termux-tasker_debug.apk
+        path: ./termux_tasker/app/build/outputs/apk/debug/*debug.apk
