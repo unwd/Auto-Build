@@ -49,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: termux-api
-        path: ./termux_api/app/build/outputs/apk/debug/termux-api_debug.apk
+        path: ./termux_api/app/build/outputs/apk/debug/*debug.apk
