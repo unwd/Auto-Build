@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Clone repository
       run: git clone https://github.com/termux/termux-widget termux_widget
     - name: Check version
