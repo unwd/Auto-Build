@@ -1,52 +1,31 @@
 name: Auto Build Termux Styling Apk
-on: 
+on:
    workflow_dispatch:
    repository_dispatch:
     types: start auto build Styling
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Clone repository
-      run: git clone https://github.com/termux/termux-styling termux_styling
-    - name: Check version
-      run: |
-        remote_version=$(cat termux_styling/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
-        local_version=$(cat version.json |jq -r .styling)
-        echo "已编译版本--$local_version"
-        echo "官方最新版本--$remote_version"
-        if [ "$local_version" == "$remote_version" ];then
-                printf "无最新版本!\n\n"
-                exit 1;
-        fi
-        echo "zt=$?" >> $GITHUB_ENV
-        echo "remote_version=$remote_version" >> $GITHUB_ENV
-        echo "local_version=$local_version" >> $GITHUB_ENV
-    - name: Build
-      run: |
-        printf "开始编译\n"
-        cd termux_styling
-        ./gradlew assembleDebug
-        cp app/build/outputs/apk/debug/*debug.apk ../Termux_styling_${remote_version}.apk
-        echo "编译结束"
-    - name: Change local version
-      run: |
-        sed -i "s/.*styling.*/\"styling\":\"${remote_version}\",/g" version.json
-        git config --global user.email "zfuns@qq.com"
-        git config --global user.name "zfuns"
-        git pull
-        git add version.json
-        git commit -m "update"
-        git push
-    - name: Upload Apk To Lzy
-      if: env.zt == 0
-      run: |
-        ${{secrets.LZY_UPDATE}}
-        up_lzy Termux_styling_*.apk
-    - name: Store generated APK file
-      if: env.zt == 0
-      uses: actions/upload-artifact@v4
-      with:
-        name: termux-styling
-        path: ./termux_styling/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/checkout@v4
+
+      - name: "设置应用名称变量"
+        run: echo 'APP_NAME=termux_styling' >> $GITHUB_ENV 
+
+      - name: "克隆 termux-styling 仓库"
+        run: git clone https://github.com/termux/termux-styling ${{ env.APP_NAME }} 
+
+      - name: "执行脚本"
+        run: bash ./script/run_build.sh ${{ env.APP_NAME }} 
+
+      - name: "上传构建产物"
+        uses: actions/upload-artifact@v4 
+        with:
+          name: ${{ env.APP_NAME }}
+          path: ./${{ env.APP_NAME }}/app/build/outputs/apk/debug/*debug.apk 
+
+      - name: "上传Apk到蓝奏云"
+        run: |
+          ${{secrets.LZY_UPDATE}}
+          up_lzy ${{ env.APP_NAME }}_*.apk
