@@ -3,7 +3,7 @@
   "termux_float": "0.16.0",
   "termux_api": "0.52.0",
   "termux_styling": "0.21.1",
-  "termux_boot": "0.8.1",
+  "termux_boot": "0.7.1",
   "termux_widget": "0.14.0",
   "termux_tasker": "0.7.0"
 }
