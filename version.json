@@ -1,6 +1,6 @@
 {
   "termux_app": "v0.119.0-beta.3",
-  "termux_float": "0.16.0",
+  "termux_float": "0.17.0",
   "termux_api": "0.53.0",
   "termux_styling": "0.32.1",
   "termux_boot": "0.8.1",
