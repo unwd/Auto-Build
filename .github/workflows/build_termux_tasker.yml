@@ -23,4 +23,9 @@ jobs:
         uses: actions/upload-artifact@v4 
         with:
           name: ${{ env.APP_NAME }}
-          path: ./${{ env.APP_NAME }}/app/build/outputs/apk/debug/*debug.apk
+          path: ./${{ env.APP_NAME }}/app/build/outputs/apk/debug/*debug.apk 
+
+      - name: "上传Apk到蓝奏云"
+        run: |
+          ${{secrets.LZY_UPDATE}}
+          up_lzy ${{ env.APP_NAME }}_*.apk
