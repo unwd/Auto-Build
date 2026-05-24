@@ -5,5 +5,5 @@
   "termux_styling": "0.32.1",
   "termux_boot": "0.8.1",
   "termux_widget": "0.15.0",
-  "termux_tasker": "0.7.0"
+  "termux_tasker": "0.9.0"
 }
